@@ -1,0 +1,28 @@
+1.不指定任何硬件设备。
+2.扔掉长度为40的部分，只留长度为20的。
+3.改变vocab size，缩小一些。
+
+main 322行，
+target_lstm20 183行，
+discriminator 171行，
+leakGANmodel 557行。
+
+main
+102行：_, g_loss,_,_是python的语法糖，意思是丢掉出来的第1、3、4位置，把2位置的值给_g_loss
+180和181行：config里关于gpu的注释掉
+198行：删注释，不知道会不会对resD有影响
+又删了一些看上去是已废弃语句的注释，main第一轮修改完毕。
+
+target_lstm20
+28行：注释掉选择设备with tf.device
+第一轮修改完毕。
+
+discriminator
+108行：with tf.device
+第一轮修改完毕。
+
+leakGANmodel
+79、304行：with tf.device
+第一轮修改完毕。
+
+2019.5.18 10：29 试运行 python Main.py --restore=True --model=leakgan_pre
